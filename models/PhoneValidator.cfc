@@ -19,8 +19,13 @@ component accessors="true" implements="cbvalidation.models.validators.IValidator
 	boolean function validate(required any validationResult, required any target, required string field, any targetValue, any validationData, struct rules){
 		// Only validate simple values and if they have length, else ignore.
 		if( isSimpleValue( arguments.targetValue ) AND len( trim( arguments.targetValue ) ) ){
-			local.phonenumber = PhoneNumber.parse(arguments.targetValue);
-			if (isnull(local.phonenumber.getRegionCode()) || !local.phonenumber.isValidForRegion(local.phonenumber.getRegionCode())) {
+			try {
+				local.phonenumber = PhoneNumber.parse(arguments.targetValue);
+			}
+			catch (any local.e) {
+				local.phonenumber = nullValue();
+			}
+			if (isnull(local.phonenumber) || isnull(local.phonenumber.getRegionCode()) || !local.phonenumber.isValidForRegion(local.phonenumber.getRegionCode())) {
 				var args = {
 					message        = "The value you entered, #arguments.targetValue#, is not a valid phone number for the country/region you selected.",
 					field          = arguments.field,
