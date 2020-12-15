@@ -34,7 +34,7 @@ component {
 		return;
 	}
 
-	PhoneNumber function parse(required string number, string defaultRegion="US") {
+	PhoneNumber function parse(required string number, string defaultRegion="") {
 		this.setNumber( getUtils().parse(javacast("string",arguments.number), javacast("string",arguments.defaultRegion)) );
 		return this;
 	}
