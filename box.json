@@ -52,5 +52,5 @@
         "watchPaths":"**.cfc"
     },
     "type":"modules",
-    "version":"8.12.14+0003"
+    "version":"8.12.14+0004"
 }
