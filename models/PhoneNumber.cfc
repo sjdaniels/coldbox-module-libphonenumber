@@ -3,7 +3,7 @@ component {
 
 	function init() {
 		var libs = [
-			 expandpath("/libphonenumber/lib/libphonenumber-8.12.14.jar")
+			 expandpath("/libphonenumber/lib/libphonenumber-8.13.11.jar")
 		];
 
 		variables.phoneUtil = createObject("java", "com.google.i18n.phonenumbers.PhoneNumberUtil", libs).getInstance();
